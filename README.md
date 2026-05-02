@@ -1,94 +1,130 @@
-# AI Travel Itinerary Planner
+# ✈️ AI Travel Itinerary Planner
 
-A full-stack travel planning application that generates personalized, multi-day itineraries from user preferences such as destination, budget, interests, accommodation type, and transport mode.
+[![TypeScript](https://img.shields.io/badge/TypeScript-94.5%25-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react)](https://reactjs.org/)
+[![Netlify](https://img.shields.io/badge/Deployed-Netlify-00C7B7?style=flat&logo=netlify)](https://netlify.com/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-This project is prepared for public portfolio use and demonstrates frontend engineering, API design, fallback handling, and deployment readiness.
+A full-stack AI-powered travel planning app that generates personalized day-by-day itineraries based on your destination, budget, interests, and travel style.
 
-## Features
+---
 
-- Personalized itinerary generation for 1 to 30 days
-- Budget-aware day planning with INR cost estimates
-- Interest-driven recommendations
-- Daily schedules with activities, meals, and accommodation notes
-- Travel tips and emergency contact guidance
-- Responsive UI for desktop and mobile
-- API-backed architecture with Netlify function support
+## ✨ Features
 
-## Tech Stack
+- 🗓️ **Personalized Itineraries** — Day-by-day plans for 1 to 30 days
+- 💰 **Budget-Aware Planning** — All recommendations fit within your total budget
+- 🎯 **Interest-Driven** — Filter by Culture, Food, Adventure, Nature and more
+- 🏨 **Accommodation & Transport** — Customize hotel type and travel mode
+- 🆘 **Emergency Contacts** — Local emergency info included in every plan
+- 📱 **Responsive UI** — Works on desktop and mobile
 
-- Frontend: React 18, TypeScript, Vite, React Router
-- Styling/UI: TailwindCSS, Radix UI, shadcn-style components, Lucide icons
-- Backend: Express 5
-- Serverless: Netlify Functions
-- Testing: Vitest
+---
 
-## Architecture
+## 🛠️ Tech Stack
 
-- client: SPA pages and reusable UI components
-- server: Express API routes and production server entry
-- netlify/functions: serverless handlers for deployment
-- shared: shared types between client and server
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 18, TypeScript, Vite, React Router |
+| **Styling** | TailwindCSS, Radix UI, shadcn/ui, Lucide Icons |
+| **Backend** | Node.js, Express 5 |
+| **AI** | Perplexity AI API |
+| **Serverless** | Netlify Functions |
+| **Testing** | Vitest |
 
-## API
+---
 
-Endpoint:
+## 🚀 Quick Start
 
-- POST /api/generate-itinerary
+### 1. Clone the repo
+```bash
+git clone https://github.com/StreetCoder02/Travel-Itinerary.git
+cd Travel-Itinerary
+```
 
-Example request:
+### 2. Install dependencies
+```bash
+npm install
+```
 
+### 3. Setup environment variables
+```bash
+cp .env.example .env
+```
+
+Add your keys to `.env`:
+PERPLEXITY_API_KEY=your_key_here
+
+### 4. Start the app
+```bash
+npm run dev
+```
+Open http://localhost:8080
+
+---
+
+## 📁 Project Structure
+Travel-Itinerary/
+├── client/          # React frontend (pages, components, hooks)
+├── server/          # Express API routes
+├── netlify/         # Serverless functions for deployment
+├── shared/          # Shared TypeScript types
+└── package.json
+---
+
+## 🔌 API
+
+**POST** `/api/generate-itinerary`
+
+```json
 {
-	"city": "Jaipur",
-	"budget": 50000,
-	"days": 4,
-	"travelers": 2,
-	"interests": ["Culture & History", "Food & Dining"],
-	"accommodation": "hotel",
-	"transportation": "public"
+  "city": "Jaipur",
+  "budget": 50000,
+  "days": 4,
+  "travelers": 2,
+  "interests": ["Culture & History", "Food & Dining"],
+  "accommodation": "hotel",
+  "transportation": "public"
 }
+```
 
-## Environment Variables
+---
 
-Create a local environment file before running:
+## 🔐 Environment Variables
 
-1. Copy .env.example to .env
-2. Fill in values as needed
+| Variable | Required | Description |
+|---|---|---|
+| `PERPLEXITY_API_KEY` | Optional | For live AI itinerary generation |
+| `GOOGLE_MAPS_API_KEY` | Optional | For live place lookups |
 
-Variables:
+If keys are missing, the app falls back to internal logic automatically.
 
-- PERPLEXITY_API_KEY: optional, needed only when live Perplexity calls are enabled
-- GOOGLE_MAPS_API_KEY: optional, used for live place lookups
-- PING_MESSAGE: optional value for /api/ping response
+---
 
-If keys are missing, itinerary generation falls back to internal/default logic.
+## 🚢 Deployment
 
-## Local Setup
+Configured for **Netlify** out of the box:
+```bash
+npm run build
+```
+Connect your GitHub repo to Netlify for auto-deploy on every push.
 
-Recommended (pnpm):
+---
 
-1. pnpm install
-2. pnpm dev
-3. open http://localhost:8080
+## 🤝 Contributing
 
-Alternative (npm):
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'feat: add amazing feature'`)
+4. Push and open a Pull Request
 
-1. npm install
-2. npm run dev
+---
 
-## Build and Run
+## 📝 License
 
-1. pnpm build
-2. pnpm start
+MIT License — see [LICENSE](LICENSE) for details.
 
-## Security Notes
+---
 
-- Do not commit real API keys
-- Keep .env files private
-- Use .env.example for public configuration templates
+**Made with ❤️ by Aniruddha Pratap Singh**
 
-## Portfolio Highlights
-
-- Built a full-stack AI-assisted itinerary planner using React, TypeScript, Express, and Netlify Functions
-- Implemented structured multi-day planning and budget-aware itinerary rendering
-- Added fallback behavior for external API failures to improve reliability
-- Configured SPA and API routing for both local development and deploy environments
+⭐ Star this repo if you found it useful!
