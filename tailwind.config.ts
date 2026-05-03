@@ -57,7 +57,7 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        wanderlust: {
+        brand: {
           orange: "#ff6b35",
           green: "#10d9c4",
           dark: "#1a1b2e",
@@ -67,11 +67,8 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-wanderlust': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 25%, #a855f7 50%, #c084fc 75%, #e879f9 100%)',
-        'gradient-india': 'linear-gradient(135deg, #3b82f6 0%, #6366f1 25%, #8b5cf6 50%, #a855f7 75%, #c084fc 100%)',
-        'gradient-orange': 'linear-gradient(135deg, #ff6b35 0%, #f97316 50%, #ea580c 100%)',
-        'gradient-button': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-        'hero-pattern': 'radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%)',
+        'gradient-brand': 'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)',
       },
       borderRadius: {
         lg: "var(--radius)",

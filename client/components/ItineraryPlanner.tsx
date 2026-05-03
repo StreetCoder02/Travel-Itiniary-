@@ -4,8 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
-import { Loader2, MapPin, Calendar, DollarSign, Users, Plane, Hotel, Utensils, Camera, Bus } from 'lucide-react';
+import { Loader2, MapPin, Calendar, Users, Plane, Hotel, Utensils, Camera, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface ItineraryRequest {
@@ -134,63 +133,63 @@ export function ItineraryPlanner() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 py-12">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            AI-Powered Travel Itinerary Planner
+    <div className="min-h-screen bg-background py-10 md:py-14">
+      <div className="container mx-auto max-w-7xl px-4">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-2 text-xs font-medium text-muted-foreground">
+            <Sparkles className="h-3.5 w-3.5 text-primary" />
+            Triply-AI itinerary builder
+          </div>
+          <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            Clean, personalized plans for every trip.
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get personalized travel plans tailored to your budget, interests, and travel style
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            Build a practical itinerary with a calm interface that keeps the focus on destination, budget, and the experience you actually want.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Input Form */}
-          <Card className="h-fit">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-blue-600" />
-                Plan Your Trip
+        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <Card className="border-border bg-card/90 shadow-2xl shadow-black/10 backdrop-blur-xl">
+            <CardHeader className="space-y-2 border-b border-border pb-6">
+              <CardTitle className="flex items-center gap-2 text-xl">
+                <MapPin className="h-5 w-5 text-primary" />
+                Trip details
               </CardTitle>
               <CardDescription>
-                Fill in the details below to get your personalized itinerary
+                Tell us where you’re going and Triply-AI will shape the rest.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-              {/* City Input */}
+            <CardContent className="space-y-6 pt-6">
               <div className="space-y-2">
-                <Label htmlFor="city">Destination City *</Label>
+                <Label htmlFor="city">Destination city *</Label>
                 <Input
                   id="city"
                   placeholder="e.g., Paris, Tokyo, New York"
                   value={formData.city}
                   onChange={(e) => handleInputChange('city', e.target.value)}
-                  className="w-full"
+                  className="h-12 rounded-2xl border-border bg-muted/40"
                 />
               </div>
 
-              {/* Budget and Duration */}
-              <div className="grid grid-cols-2 gap-4">
-                                 <div className="space-y-2">
-                   <Label htmlFor="budget">Total Budget (INR) *</Label>
-                   <div className="relative">
-                     <span className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 font-bold">₹</span>
-                     <Input
-                       id="budget"
-                       type="number"
-                       placeholder="50000"
-                       value={formData.budget || ''}
-                       onChange={(e) => handleInputChange('budget', parseInt(e.target.value) || 0)}
-                       className="pl-10"
-                     />
-                   </div>
-                   <p className="text-xs text-gray-500">Enter your budget directly in Indian Rupees (₹)</p>
-                 </div>
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="days">Number of Days *</Label>
+                  <Label htmlFor="budget">Budget (INR) *</Label>
                   <div className="relative">
-                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">₹</span>
+                    <Input
+                      id="budget"
+                      type="number"
+                      placeholder="50000"
+                      value={formData.budget || ''}
+                      onChange={(e) => handleInputChange('budget', parseInt(e.target.value) || 0)}
+                      className="h-12 rounded-2xl border-border bg-muted/40 pl-9"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="days">Days *</Label>
+                  <div className="relative">
+                    <Calendar className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <Input
                       id="days"
                       type="number"
@@ -199,18 +198,17 @@ export function ItineraryPlanner() {
                       placeholder="7"
                       value={formData.days || ''}
                       onChange={(e) => handleInputChange('days', parseInt(e.target.value) || 1)}
-                      className="pl-10"
+                      className="h-12 rounded-2xl border-border bg-muted/40 pl-9"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Travelers and Accommodation */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="travelers">Number of Travelers</Label>
+                  <Label htmlFor="travelers">Travelers</Label>
                   <div className="relative">
-                    <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <Users className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <Input
                       id="travelers"
                       type="number"
@@ -219,18 +217,18 @@ export function ItineraryPlanner() {
                       placeholder="2"
                       value={formData.travelers || ''}
                       onChange={(e) => handleInputChange('travelers', parseInt(e.target.value) || 1)}
-                      className="pl-10"
+                      className="h-12 rounded-2xl border-border bg-muted/40 pl-9"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label>Accommodation Type</Label>
+                  <Label>Accommodation</Label>
                   <Select value={formData.accommodation} onValueChange={(value) => handleInputChange('accommodation', value)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="h-12 rounded-2xl border-border bg-muted/40">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {accommodationOptions.map(option => (
+                      {accommodationOptions.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
                         </SelectItem>
@@ -240,15 +238,14 @@ export function ItineraryPlanner() {
                 </div>
               </div>
 
-              {/* Transportation */}
               <div className="space-y-2">
-                <Label>Preferred Transportation</Label>
+                <Label>Transportation</Label>
                 <Select value={formData.transportation} onValueChange={(value) => handleInputChange('transportation', value)}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-12 rounded-2xl border-border bg-muted/40">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {transportationOptions.map(option => (
+                    {transportationOptions.map((option) => (
                       <SelectItem key={option.value} value={option.value}>
                         {option.label}
                       </SelectItem>
@@ -257,19 +254,18 @@ export function ItineraryPlanner() {
                 </Select>
               </div>
 
-              {/* Interests */}
               <div className="space-y-3">
-                <Label>Travel Interests (Select all that apply)</Label>
-                <div className="grid grid-cols-2 gap-2">
-                  {interestOptions.map(interest => (
+                <Label>Interests</Label>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {interestOptions.map((interest) => (
                     <button
                       key={interest}
                       type="button"
                       onClick={() => handleInterestToggle(interest)}
-                      className={`p-2 text-sm rounded-lg border transition-colors ${
+                      className={`rounded-2xl border px-3 py-2 text-left text-sm transition ${
                         formData.interests.includes(interest)
-                          ? 'bg-blue-100 border-blue-300 text-blue-700'
-                          : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'
+                          ? 'border-primary/40 bg-primary/10 text-foreground'
+                          : 'border-border bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground'
                       }`}
                     >
                       {interest}
@@ -278,98 +274,92 @@ export function ItineraryPlanner() {
                 </div>
               </div>
 
-              {/* Generate Button */}
               <Button
                 onClick={generateItinerary}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
                 size="lg"
+                className="h-12 w-full rounded-2xl bg-foreground text-background hover:bg-foreground/90"
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Generating Itinerary...
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Generating itinerary...
                   </>
                 ) : (
                   <>
-                    <Plane className="w-4 h-4 mr-2" />
-                    Generate My Itinerary
+                    <Plane className="mr-2 h-4 w-4" />
+                    Generate itinerary
                   </>
                 )}
               </Button>
             </CardContent>
           </Card>
 
-          {/* Results Display */}
           <div className="space-y-6">
             {itinerary ? (
               <>
-                {/* Summary Card */}
-                <Card>
-                  <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
-                    <CardTitle className="text-2xl text-center">
-                      {itinerary.city} Adventure
-                    </CardTitle>
-                    <CardDescription className="text-center">
-                      {formData.days} days • ₹{itinerary.totalBudget.toLocaleString('en-IN')} budget • {formData.travelers} traveler{formData.travelers > 1 ? 's' : ''}
+                <Card className="border-border bg-card/90 shadow-2xl shadow-black/10 backdrop-blur-xl">
+                  <CardHeader className="border-b border-border pb-6">
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                      <span className="rounded-full border border-border bg-muted/40 px-3 py-1">{formData.days} days</span>
+                      <span className="rounded-full border border-border bg-muted/40 px-3 py-1">₹{itinerary.totalBudget.toLocaleString('en-IN')}</span>
+                      <span className="rounded-full border border-border bg-muted/40 px-3 py-1">
+                        {formData.travelers} traveler{formData.travelers > 1 ? 's' : ''}
+                      </span>
+                    </div>
+                    <CardTitle className="pt-2 text-2xl">{itinerary.city}</CardTitle>
+                    <CardDescription className="text-base leading-7">
+                      {itinerary.summary}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="pt-6">
-                    <p className="text-gray-700 leading-relaxed">{itinerary.summary}</p>
-                  </CardContent>
                 </Card>
 
-                {/* Daily Itinerary */}
                 <div className="space-y-4">
                   {itinerary.days.map((day) => (
-                    <Card key={day.day}>
+                    <Card key={day.day} className="border-border bg-card/90 shadow-lg shadow-black/5 backdrop-blur-xl">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-blue-600" />
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                          <Calendar className="h-4 w-4 text-primary" />
                           Day {day.day}
                         </CardTitle>
                       </CardHeader>
-                      <CardContent className="space-y-4">
+                      <CardContent className="space-y-5">
                         <div>
-                          <h4 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                            <Camera className="w-4 h-4 text-green-600" />
-                            Daily Schedule
+                          <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                            <Camera className="h-4 w-4" />
+                            Daily schedule
                           </h4>
                           <ul className="space-y-2">
                             {day.activities.map((activity, index) => (
-                              <li key={index} className="text-sm text-gray-700 flex items-start gap-3 p-2 bg-gray-50 rounded-lg">
-                                <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                                <div className="flex-1">
-                                  <span className="font-medium text-blue-600">{activity}</span>
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        
-                        <div>
-                          <h4 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                            <Utensils className="w-4 h-4 text-orange-600" />
-                            Dining Schedule
-                          </h4>
-                          <ul className="space-y-2">
-                            {day.meals.map((meal, index) => (
-                              <li key={index} className="text-sm text-gray-700 flex items-start gap-3 p-2 bg-orange-50 rounded-lg">
-                                <span className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></span>
-                                <div className="flex-1">
-                                  <span className="font-medium text-orange-700">{meal}</span>
-                                </div>
+                              <li key={index} className="flex items-start gap-3 rounded-2xl border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
+                                <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                                <span className="text-foreground/90">{activity}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="flex justify-between items-center pt-2 border-t border-gray-100">
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <Hotel className="w-4 h-4 text-purple-600" />
+                        <div>
+                          <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                            <Utensils className="h-4 w-4" />
+                            Meals
+                          </h4>
+                          <ul className="space-y-2">
+                            {day.meals.map((meal, index) => (
+                              <li key={index} className="flex items-start gap-3 rounded-2xl border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
+                                <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400" />
+                                <span className="text-foreground/90">{meal}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="flex flex-col gap-2 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Hotel className="h-4 w-4 text-primary" />
                             {day.accommodation}
                           </div>
-                          <div className="text-sm font-semibold text-green-600">
+                          <div className="text-sm font-semibold text-foreground">
                             ₹{day.estimatedCost.toLocaleString('en-IN')}
                           </div>
                         </div>
@@ -378,32 +368,31 @@ export function ItineraryPlanner() {
                   ))}
                 </div>
 
-                {/* Tips and Emergency Contacts */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Card>
+                <div className="grid gap-4 md:grid-cols-2">
+                    <Card className="border-border bg-card/90 shadow-lg shadow-black/5 backdrop-blur-xl">
                     <CardHeader>
-                      <CardTitle className="text-lg">Travel Tips</CardTitle>
+                      <CardTitle className="text-lg">Travel tips</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
                         {itinerary.tips.map((tip, index) => (
-                          <li key={index} className="text-sm text-gray-600 flex items-start gap-2">
-                            <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></span>
-                            {tip}
+                          <li key={index} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground">
+                            <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-amber-400" />
+                            <span>{tip}</span>
                           </li>
                         ))}
                       </ul>
                     </CardContent>
                   </Card>
 
-                  <Card>
+                    <Card className="border-border bg-card/90 shadow-lg shadow-black/5 backdrop-blur-xl">
                     <CardHeader>
-                      <CardTitle className="text-lg">Emergency Contacts</CardTitle>
+                      <CardTitle className="text-lg">Emergency contacts</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
                         {itinerary.emergencyContacts.map((contact, index) => (
-                          <li key={index} className="text-sm text-gray-600">
+                          <li key={index} className="text-sm leading-6 text-muted-foreground">
                             {contact}
                           </li>
                         ))}
@@ -413,11 +402,13 @@ export function ItineraryPlanner() {
                 </div>
               </>
             ) : (
-              <Card className="h-96 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <Plane className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                  <p className="text-lg font-medium">Your itinerary will appear here</p>
-                  <p className="text-sm">Fill out the form and click generate to get started</p>
+              <Card className="flex min-h-[32rem] items-center justify-center border-border bg-card/90 shadow-2xl shadow-black/10 backdrop-blur-xl">
+                <div className="max-w-sm text-center">
+                  <Plane className="mx-auto mb-4 h-14 w-14 text-primary/60" />
+                  <p className="text-lg font-medium text-foreground">Your itinerary will appear here</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    Fill in the form and generate a plan to see your days, meals, and budget in one clean view.
+                  </p>
                 </div>
               </Card>
             )}
