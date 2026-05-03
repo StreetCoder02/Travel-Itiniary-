@@ -4,6 +4,7 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react)](https://reactjs.org/)
 [![Netlify](https://img.shields.io/badge/Deployed-Netlify-00C7B7?style=flat&logo=netlify)](https://netlify.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Triply%20AI-00C7B7?style=flat&logo=netlify)](https://triplyai.netlify.app)
 
 A full-stack AI-powered travel planning app that generates personalized day-by-day itineraries based on your destination, budget, interests, and travel style.
 
